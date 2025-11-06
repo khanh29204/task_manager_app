@@ -131,14 +131,14 @@ Mở hai cửa sổ terminal riêng biệt:
 
 ## Các scripts có sẵn
 
-| Script               | Mô tả                                                     |
-| -------------------- | --------------------------------------------------------- |
-| `yarn android`       | Build và chạy ứng dụng trên máy ảo/thiết bị Android.      |
-| `yarn ios`           | Build và chạy ứng dụng trên máy ảo/thiết bị iOS.          |
-| `yarn build`         | Build apk và cài đặt lên thiết bị hiện đang được kết nối. |
-| `yarn start` / `dev` | Khởi động Metro, bundler cho React Native.                |
-| `yarn lint`          | Chạy ESLint để kiểm tra lỗi và format code.               |
-| `yarn test`          | Chạy các unit test với Jest.                              |
+| Script               | Mô tả                                                             |
+| -------------------- | ----------------------------------------------------------------- |
+| `yarn android`       | Build và chạy ứng dụng trên máy ảo/thiết bị Android.              |
+| `yarn ios`           | Build và chạy ứng dụng trên máy ảo/thiết bị iOS.                  |
+| `yarn build-android` | Build apk và cài đặt lên thiết bị hiện đang được kết nối (Linux). |
+| `yarn start` / `dev` | Khởi động Metro, bundler cho React Native.                        |
+| `yarn lint`          | Chạy ESLint để kiểm tra lỗi và format code.                       |
+| `yarn test`          | Chạy các unit test với Jest.                                      |
 
 ## Cấu trúc thư mục
 
