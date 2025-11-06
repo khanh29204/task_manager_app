@@ -46,7 +46,10 @@ const HomeScreen: React.FC = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const searchDebounce = useDebounce(search, 500);
   const data = useMemo(() => {
-    return Object.values(tasks);
+    return Object.values(tasks).sort(
+      (a, b) =>
+        new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+    );
   }, [tasks]);
   const [dataFilter, setDataFilter] = useState(data);
 

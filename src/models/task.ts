@@ -9,6 +9,8 @@ export interface Task {
   major: string;
   position: string;
   is_complete: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 export enum Gender {

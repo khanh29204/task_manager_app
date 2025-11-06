@@ -43,6 +43,9 @@ const FilterChip: React.FC<FilterChipProps> = ({onValueChange}) => {
             backgroundColor={
               completionFilter === 'all' ? Colors.blue30 : undefined
             }
+            labelStyle={{
+              color: completionFilter === 'all' ? Colors.white : Colors.black,
+            }}
             onPress={() => setCompletionFilter('all')}
           />
           <Chip
@@ -50,12 +53,20 @@ const FilterChip: React.FC<FilterChipProps> = ({onValueChange}) => {
             backgroundColor={
               completionFilter === 'completed' ? Colors.blue30 : undefined
             }
+            labelStyle={{
+              color:
+                completionFilter === 'completed' ? Colors.white : Colors.black,
+            }}
             onPress={() => setCompletionFilter('completed')}
           />
           <Chip
             backgroundColor={
               completionFilter === 'incomplete' ? Colors.blue30 : undefined
             }
+            labelStyle={{
+              color:
+                completionFilter === 'incomplete' ? Colors.white : Colors.black,
+            }}
             onPress={() => setCompletionFilter('incomplete')}
             label="Chưa hoàn thành"
           />
@@ -68,6 +79,9 @@ const FilterChip: React.FC<FilterChipProps> = ({onValueChange}) => {
         <View row gap-4>
           <Chip
             label="Tất cả"
+            labelStyle={{
+              color: genderFilter === 'all' ? Colors.white : Colors.black,
+            }}
             backgroundColor={genderFilter === 'all' ? Colors.blue30 : undefined}
             onPress={() => setGenderFilter('all')}
           />
@@ -76,14 +90,32 @@ const FilterChip: React.FC<FilterChipProps> = ({onValueChange}) => {
             backgroundColor={
               genderFilter === Gender.MALE ? Colors.blue30 : undefined
             }
+            labelStyle={{
+              color: genderFilter === Gender.MALE ? Colors.white : Colors.black,
+            }}
             onPress={() => setGenderFilter(Gender.MALE)}
           />
           <Chip
             backgroundColor={
               genderFilter === Gender.FEMALE ? Colors.blue30 : undefined
             }
+            labelStyle={{
+              color:
+                genderFilter === Gender.FEMALE ? Colors.white : Colors.black,
+            }}
             onPress={() => setGenderFilter(Gender.FEMALE)}
             label="Nữ"
+          />
+          <Chip
+            backgroundColor={
+              genderFilter === Gender.OTHER ? Colors.blue30 : undefined
+            }
+            labelStyle={{
+              color:
+                genderFilter === Gender.OTHER ? Colors.white : Colors.black,
+            }}
+            onPress={() => setGenderFilter(Gender.OTHER)}
+            label="Khác"
           />
         </View>
       </ScrollView>

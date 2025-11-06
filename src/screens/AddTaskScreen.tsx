@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Alert, ActivityIndicator} from 'react-native';
 import {View, Text, Button, Colors} from 'react-native-ui-lib';
 import {useDispatch, useSelector} from 'react-redux';
@@ -31,6 +31,7 @@ const AddTaskScreen: React.FC = () => {
   const isCreating = useSelector(
     (state: RootState) => state.task.status === 'loading',
   );
+  const saveComplete = useRef(false);
 
   const {
     form,
@@ -52,14 +53,18 @@ const AddTaskScreen: React.FC = () => {
     }
 
     try {
-      await dispatch(createTask(form as Omit<Task, 'id'>)).unwrap();
-      navigation.goBack();
+      await dispatch(createTask(form as Omit<Task, 'id'>))
+        .unwrap()
+        .then(() => {
+          saveComplete.current = true;
+          navigation.goBack();
+        });
     } catch (error) {}
   };
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', e => {
-      if (!isDirty || isSaving) {
+      if (!isDirty || isSaving || saveComplete.current) {
         return;
       }
       e.preventDefault();
