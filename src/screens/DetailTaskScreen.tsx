@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useMemo, useRef} from 'react';
 import {Alert, ActivityIndicator} from 'react-native';
 import {View, Text, Button, Colors} from 'react-native-ui-lib';
 import {useDispatch, useSelector} from 'react-redux';
@@ -78,6 +78,20 @@ const DetailTaskScreen: React.FC = () => {
     return unsubscribe;
   }, [navigation, isDirty, isSaving, saveComplete]);
 
+  const isLoading = useMemo(
+    () =>
+      isSaving ||
+      uploadingState.isAvatarUploading ||
+      uploadingState.isCvUploading ||
+      uploadingState.isDocUploading,
+    [
+      isSaving,
+      uploadingState.isAvatarUploading,
+      uploadingState.isCvUploading,
+      uploadingState.isDocUploading,
+    ],
+  );
+
   if (!originalTask) {
     return (
       <View flex center>
@@ -85,12 +99,6 @@ const DetailTaskScreen: React.FC = () => {
       </View>
     );
   }
-
-  const isLoading =
-    isSaving ||
-    uploadingState.isAvatarUploading ||
-    uploadingState.isCvUploading ||
-    uploadingState.isDocUploading;
 
   return (
     <View flex>

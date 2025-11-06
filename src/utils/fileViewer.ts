@@ -40,3 +40,34 @@ export const viewFile = async (fileUrl?: string) => {
     Alert.alert('Lỗi', `Không thể mở file: ${e.message}`);
   }
 };
+
+export const saveFileToCache = async (fileUrl?: string) => {
+  if (!fileUrl) {
+    return;
+  }
+
+  const fileName = fileUrl.split('/').pop();
+  if (!fileName) {
+    return;
+  }
+
+  const localFile = `${RNBlobUtil.fs.dirs.CacheDir}/${fileName}`;
+
+  try {
+    const fileExists = await RNBlobUtil.fs.exists(localFile);
+
+    if (fileExists) {
+      return localFile;
+    } else {
+      const res = await RNBlobUtil.config({
+        fileCache: true,
+        path: localFile,
+      }).fetch('GET', fileUrl);
+
+      return res.path();
+    }
+  } catch (e: any) {
+    console.error('Error saving file to cache:', e);
+    return null;
+  }
+};

@@ -54,14 +54,6 @@ const HomeScreen: React.FC = () => {
   const [dataFilter, setDataFilter] = useState(data);
 
   useEffect(() => {
-    setIsRefreshing(true);
-    const timer = setTimeout(() => {
-      setIsRefreshing(false);
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [searchDebounce, filter]);
-
-  useEffect(() => {
     const t = InteractionManager.runAfterInteractions(async () => {
       const filtered = await Promise.resolve().then(() => {
         if (

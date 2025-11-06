@@ -7,12 +7,14 @@ import {
   optimisticToggleComplete,
   revertToggleComplete,
 } from '../slice/task.slice';
+import {saveFileToCache} from '../../utils/fileViewer';
 
 export const uploadFile = createAsyncThunk(
   'task/uploadFile',
   async (formData: FormData, {rejectWithValue, dispatch}) => {
     try {
       const response = await taskApi.uploadFileAPI(formData);
+      saveFileToCache(response.url);
       return response.url;
     } catch (error: any) {
       const errorMessage = error.response?.data?.message || error.message;

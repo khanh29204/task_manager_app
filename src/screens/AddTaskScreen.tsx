@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useMemo, useRef} from 'react';
 import {Alert, ActivityIndicator} from 'react-native';
 import {View, Text, Button, Colors} from 'react-native-ui-lib';
 import {useDispatch, useSelector} from 'react-redux';
@@ -84,11 +84,19 @@ const AddTaskScreen: React.FC = () => {
     return unsubscribe;
   }, [navigation, isDirty, isSaving]);
 
-  const isLoading =
-    isCreating ||
-    uploadingState.isAvatarUploading ||
-    uploadingState.isCvUploading ||
-    uploadingState.isDocUploading;
+  const isLoading = useMemo(
+    () =>
+      isCreating ||
+      uploadingState.isAvatarUploading ||
+      uploadingState.isCvUploading ||
+      uploadingState.isDocUploading,
+    [
+      isCreating,
+      uploadingState.isAvatarUploading,
+      uploadingState.isCvUploading,
+      uploadingState.isDocUploading,
+    ],
+  );
 
   if (!form) {
     return (
