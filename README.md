@@ -38,9 +38,9 @@
 
 ## Ảnh chụp màn hình
 
-|        Màn hình chính (Home)        |        Chi tiết công việc (Detail)         |          Thêm công việc (Add)          |
-| :---------------------------------: | :----------------------------------------: | :------------------------------------: |
-| <img src="./assets/homescreen.png"> | <img src="./assets//taskdetailscreen.png"> | <img src="./assets/addtaskscreen.png"> |
+|        Màn hình chính (Home)        |        Chi tiết công việc (Detail)        |          Thêm công việc (Add)          |
+| :---------------------------------: | :---------------------------------------: | :------------------------------------: |
+| <img src="./assets/homescreen.png"> | <img src="./assets/taskdetailscreen.png"> | <img src="./assets/addtaskscreen.png"> |
 
 ## Công nghệ sử dụng
 
